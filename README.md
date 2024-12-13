@@ -1,3 +1,3 @@
-# electron-nitro-starter
+# electron-nitro starter templates
 
-electron-nitro app starter templates, for create a new electron app project with hosting nitro backend api
+Quickly get started with a minimal electron-nitro app, which create a new electron app project with hosting nitro backend api
