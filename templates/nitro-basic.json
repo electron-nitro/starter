@@ -1,6 +1,6 @@
 {
     "name": "nitro-basic",
     "defaultDir": "electron-nitro-app",
-    "url": "https://github.com/wanlitao/electron-nitro-starter",
-    "tar": "https://codeload.github.com/wanlitao/electron-nitro-starter/tar.gz/refs/heads/basic"
+    "url": "https://github.com/electron-nitro/starter",
+    "tar": "https://codeload.github.com/electron-nitro/starter/tar.gz/refs/heads/basic"
   }
