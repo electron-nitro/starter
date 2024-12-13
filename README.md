@@ -1,1 +1,3 @@
-electron app starter templates, with hosting nitro backend api
+# electron-nitro-starter
+
+electron-nitro app starter templates
