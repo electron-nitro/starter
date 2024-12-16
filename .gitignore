@@ -1,0 +1,15 @@
+node_modules
+
+.data
+.nitro
+.cache
+.output
+
+#.env*
+
+dist
+release
+workspace
+
+downloads
+outputs
