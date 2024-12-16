@@ -11,16 +11,10 @@ export default defineNitroConfig({
   openAPI: {
     production: "runtime",
     meta: {
-      title: "ztx-bid-invitation",
-      description: "ztx bid invitation backend api",
+      title: "electron-nitro-basic",
+      description: "electron nitro basic backend api",
       version: "1.0",
     },
-  },
-  routeRules: {
-    "/static/**": { static: true },
-  },
-  runtimeConfig: {
-    staticMappingDir: "outputs",
   },
   compatibilityDate: "2024-08-27",
 });

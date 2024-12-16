@@ -10,19 +10,9 @@ import { isDevelopment, isProduction } from "./utils/env";
 import { startBackgroundNitroServer } from "./helpers/start-nitro-server";
 import { configureMessageBoxHandler } from "./handlers/messagebox";
 import { configureNotificationHandler } from "./handlers/notification";
-import {
-  protocol_scheme,
-  configureProtocolUrlHandler,
-  checkProcessProtocolUrlArg,
-  sendProtocolUrlQueryParamsToFocusWindow,
-} from "./handlers/protocol";
 import { configureUpdater } from "./autoupdate/updater";
 import path from "node:path";
 import fs from "node:fs";
-import {
-  configureCopyFileHandler,
-  configureOpenFileHandler,
-} from "./handlers/file-utility";
 import {
   registerDevToolsShortcutKey,
   registerReloadShortcutKeys,
@@ -53,10 +43,6 @@ function createWindow() {
   });
 
   injectUpdaterHandlerJs(mainWindow); // 注入自动更新处理代码
-
-  mainWindow.webContents.on("did-finish-load", () => {
-    checkProcessProtocolUrlArg(process.argv); // 处理 协议url唤醒启动
-  });
 
   // 主窗口关闭时隐藏窗口而不是退出应用
   mainWindow.on("close", (event) => {
@@ -127,39 +113,11 @@ function quitApp() {
   }
 }
 
-// 设置 对应协议启动应用（开发模式调试）
-if (process.defaultApp) {
-  if (process.argv.length >= 2) {
-    app.setAsDefaultProtocolClient(protocol_scheme, process.execPath, [
-      path.resolve(process.argv[1]),
-    ]);
-  }
-} else {
-  app.setAsDefaultProtocolClient(protocol_scheme);
-}
-
 // 单实例锁定
 const gotTheLock = app.requestSingleInstanceLock();
 if (!gotTheLock) {
   app.quit();
 } else {
-  // win url唤醒 处理
-  app.on("second-instance", (event, argv, workingDirectory) => {
-    // Someone tried to run a second instance, we should focus our window.
-    if (mainWindow) {
-      mainWindow.isMinimized() && mainWindow.restore();
-      mainWindow.show();
-      mainWindow.focus();
-    }
-
-    checkProcessProtocolUrlArg(argv);
-  });
-
-  // mac url唤醒 处理
-  app.on("open-url", (event, url) => {
-    checkProcessProtocolUrlArg([url]);
-  });
-
   app.whenReady().then(() => {
     if (isProduction) {
       startBackgroundNitroServer();
@@ -171,11 +129,6 @@ if (!gotTheLock) {
 
     configureMessageBoxHandler();
     configureNotificationHandler();
-
-    configureCopyFileHandler();
-    configureOpenFileHandler();
-
-    configureProtocolUrlHandler(sendProtocolUrlQueryParamsToFocusWindow);
 
     createWindow();
     createTray(); // 添加系统托盘

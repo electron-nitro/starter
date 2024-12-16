@@ -1,15 +1,19 @@
 {
   "private": true,
-  "name": "ztx-bid-invitation-app",
-  "productName": "招天下招标工具",
-  "description": "招采天下3.0招标工具",
+  "name": "electron-nitro-basic-app",
+  "productName": "electron-nitro-basic",
+  "description": "electron app with hosting nitro backend",
   "version": "1.0.0",
   "author": {
-    "name": "zhaotx",
-    "email": "admin@zhaotx.cn",
-    "url": "https://zhaotx.cn/"
+    "name": "electron-nitro",
+    "email": "admin@electron-nitro.cn",
+    "url": "https://electron-nitro.cn/"
   },
-  "homepage": "https://gitlab.zhaotx.cn/zctx3.0/client-tool/tdd-tool",
+  "homepage": "https://electron-nitro.cn/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/electron-nitro/starter.git"
+  },
   "main": "dist/electron/main.js",
   "scripts": {
     "build": "tsc -p src/electron && pnpm copy-icons && nitro build && electron-builder",
@@ -21,20 +25,13 @@
     "copy-icons": "copyfiles -u 1 src/electron/icons/* dist"
   },
   "devDependencies": {
-    "@types/mime-types": "^2.1.4",
     "copyfiles": "^2.4.1",
     "electron": "^31.3.1",
     "electron-builder": "^24.13.3",
     "nitropack": "latest"
   },
   "dependencies": {
-    "await-to-js": "^3.0.0",
     "dotenv": "^16.4.5",
-    "electron-updater": "^6.3.9",
-    "env-paths": "^3.0.0",
-    "fast-xml-parser": "^4.5.0",
-    "mime-types": "^2.1.35",
-    "undici": "^6.20.1",
-    "uuid": "^11.0.3"
+    "electron-updater": "^6.3.9"
   }
 }

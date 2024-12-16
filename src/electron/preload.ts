@@ -34,24 +34,8 @@ contextBridge.exposeInMainWorld("electronIpc", {
   showMessageBox(...args: any[]) {
     return ipcRenderer.invoke("show-messagebox", ...args);
   },
-  openFileDialog: (fileFilterStr) =>
-    ipcRenderer.invoke("dialog:openFile", fileFilterStr),
-  copyFile: (sourcePath, destinationDir) =>
-    ipcRenderer.invoke("file:copyFile", sourcePath, destinationDir),
-  onCopyProgress: (callback) =>
-    ipcRenderer.on("file:copyProgress", (event, progress) =>
-      callback(progress)
-    ),
-  acceptProtocolOpenQueryParams: (listener: (...args: any[]) => void) =>
-    ipcRenderer.on("protocol-open-queryparams", (event, openQueryParamsJsonStr) =>
-      listener(openQueryParamsJsonStr)
-    ),
 });
 
 ipcRenderer.on("nitro-server-console-output", (event, message) => {
   console.log("[Nitro Server Process Console]:", message);
-});
-
-ipcRenderer.on("protocol-open-queryparams", (event, openQueryParamsJsonStr) => {
-  console.log("[Protocol Open QueryParams]:", openQueryParamsJsonStr);
 });

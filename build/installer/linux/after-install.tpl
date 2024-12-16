@@ -5,9 +5,9 @@ echo "Updating desktop database..."
 update-desktop-database /usr/share/applications
 
 # 注册自定义协议
-echo "Registering URL scheme handler for ztx-bid-invitation..."
-xdg-mime default "ztx-bid-invitation-app.desktop" "x-scheme-handler/ztx-bid-invitation"
+echo "Registering URL scheme handler for electron-nitro-basic..."
+xdg-mime default "electron-nitro-basic-app.desktop" "x-scheme-handler/electron-nitro-basic"
 
-echo "Registration complete. ztx-bid-invitation:// protocol is now handled by ztx-bid-invitation-app."
+echo "Registration complete. electron-nitro-basic:// protocol is now handled by electron-nitro-basic-app."
 
 exit 0

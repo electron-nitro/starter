@@ -1,6 +1,6 @@
-appId: com.ztx.bid.invitation
-productName: 招天下招标工具
-copyright: Copyright © 2024 Zhaotx
+appId: com.electron.nitro-basic
+productName: electron-nitro-basic
+copyright: Copyright © 2024 electron-nitro
 asar: false
 directories:
   output: release
@@ -12,11 +12,11 @@ files:
       - dist
       - .env.production
 protocols:
-  name: ztx-bid-invitation-app
-  schemes: [ztx-bid-invitation]
+  name: electron-nitro-basic-app
+  schemes: [electron-nitro-basic]
 publish:
   provider: generic
-  url: http://172.17.20.222:9000/internalfile/test/electron/ztx-bid-invitation/release
+  url: http://example.com/electron-nitro-basic/release
 nsis:
   deleteAppDataOnUninstall: true
   include: build/installer/win/nsis-installer.nsh

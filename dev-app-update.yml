@@ -1,3 +1,3 @@
 provider: generic
-url: http://172.17.20.222:9000/internalfile/test/electron/ztx-bid-invitation/release
-updaterCacheDirName: ztx-bid-invitation-app-dev-updater
+url: http://example.com/electron-nitro-basic/release
+updaterCacheDirName: electron-nitro-basic-app-dev-updater
